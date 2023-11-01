@@ -1,19 +1,61 @@
 ﻿@page "/"
+@using GameCatalog.Models
 
 <PageTitle>Game Catalog</PageTitle>
 
 <h1>Game Catalog</h1>
 
-<table>
-    <thead>
-        <th>Id</th>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
+        <th>ID</th>
         <th>Name</th>
-        <th>Genre</th>
+        <th>Grenre</th>
         <th>Price</th>
         <th>Release Date</th>
         <th></th>
     </thead>
     <tbody>
-
+        @foreach (var game in games)
+        {
+         <tr>
+          <td>@game.Id</td>
+          <td>@game.Name</td>
+          <td>@game.Grenre</td>
+          <td>@game.Price</td>
+          <td>@game.ReleaseDate.ToString("MM/dd/yyyy")</td>
+          <td></td>
+         </tr>   
+        }
     </tbody>
 </table>
+
+
+@code{
+    private Game[] games = new[]
+        {
+        new Game()
+        {
+            Id = 1,
+            Name = "Street Fighter II",
+            Grenre = "fightting",
+            Price = 19.99M,
+            ReleaseDate = new DateTime(1991,2,1)
+        },
+               new Game()
+        {
+            Id = 2,
+            Name = "Firnal Fantasy XIV",
+            Grenre = "Roleplaying",
+            Price = 59.99M,
+            ReleaseDate = new DateTime(2010,9,30)
+        },
+               new Game()
+        {
+            Id = 3,
+            Name = "Fifa 23",
+            Grenre = "Sports",
+            Price = 69.99M,
+            ReleaseDate = new DateTime(2022,9,27)
+        }
+    };
+}

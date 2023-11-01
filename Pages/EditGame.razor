@@ -1,5 +1,6 @@
 ﻿@page "/game"
 @using GameCatalog.Models;
+@inject NavigationManager NM
 
 <PageTitle>New game</PageTitle>
 <h1>Game Catalog</h1>
@@ -7,7 +8,7 @@
 
 <div class="row">
     <div class="col-sm-4">
-        <EditForm Model="@game">
+        <EditForm Model="@game" OnSubmit="HandelSubmit">
             <div class="mb-3">
                 <label for="name" class="from-label">Name:</label>
                 <InputText id="name" @bind-Value="game.Name" class="from-control"></InputText>
@@ -24,6 +25,7 @@
                 <label for="releaseDate" class="from-label">Release Date:</label>
                 <InputDate id="releaseDate" @bind-Value="game.ReleaseDate" class="from-control"></InputDate>
             </div>
+            <button type="submit" class="btn btn-primary">Save</button>
         </EditForm>
     </div>
 </div>
@@ -35,4 +37,9 @@
             Grenre = string.Empty,
             ReleaseDate = DateTime.UtcNow
         };
+    private void HandelSubmit()
+    {
+        GameClient.AddGame(game);
+        NM.NavigateTo("/");
+    }
 }

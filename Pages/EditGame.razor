@@ -15,7 +15,14 @@
             </div>
             <div class="mb-3">
                 <label for="genre" class="from-label">Genre:</label>
-                <InputText id="name" @bind-Value="game.Grenre" class="from-control"></InputText>
+                <InputSelect id="name" @bind-Value="game.Grenre" class="from-Select">
+                    <option value="">Select Genre</option>
+                    <option value="Fighting">Fighting</option>
+                    <option value="Kids and Family">Kids and Family</option>
+                    <option value="Racing">Racing</option>
+                    <option value="Roleplaying">Roleplaying</option>
+                    <option value="Sports">Sports</option>
+                </InputSelect>
             </div>
             <div class="mb-3">
                 <label for="price" class="from-label">price:</label>

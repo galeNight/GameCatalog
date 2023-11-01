@@ -4,7 +4,7 @@ namespace GameCatalog
 {
     public static class GameClient
     {
-         private static readonly List<Game> games = new()
+        private static readonly List<Game> games = new()
         {
             new Game()
             {
@@ -40,6 +40,18 @@ namespace GameCatalog
         {
             game.Id = games.Max(game => game.Id) + 1;
             games.Add(game);
+        }
+        public static Game GetGame(int id)
+        {
+            return games.Find(game => game.Id == id) ?? throw new Exception("Could not find Game!");
+        }
+        public static void UpdateGame(Game updategame)
+        {
+            Game existingGame = GetGame(updategame.Id);
+            existingGame.Name = updategame.Name;
+            existingGame.Grenre = updategame.Grenre;
+            existingGame.Price = updategame.Price;
+            existingGame.ReleaseDate = updategame.ReleaseDate;
         }
     }
 }

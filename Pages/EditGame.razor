@@ -3,9 +3,9 @@
 @using GameCatalog.Models;
 @inject NavigationManager NM
 
-<PageTitle>New game</PageTitle>
+<PageTitle>@title</PageTitle>
 <h1>Game Catalog</h1>
-<h3>New Game</h3>
+<h3>@title</h3>
 
 @if(game is null)
 {
@@ -53,6 +53,7 @@ else
     public int? Id{ get; set; }
 
     private Game? game;
+    private string title = string.Empty;
 
     protected override void OnParametersSet()
     {
@@ -67,6 +68,8 @@ else
                  Price = foundGame.Price,
                  ReleaseDate = foundGame.ReleaseDate
             };
+
+            title = $"Edit{game.Name}";
         }
         else
         {
@@ -76,6 +79,8 @@ else
                  Grenre = string.Empty,
                  ReleaseDate = DateTime.UtcNow
             };
+
+            title = "New Game";
         }
     }
     private void HandelSubmit()

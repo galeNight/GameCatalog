@@ -53,5 +53,10 @@ namespace GameCatalog
             existingGame.Price = updategame.Price;
             existingGame.ReleaseDate = updategame.ReleaseDate;
         }
+        public static void DeleteGame(int id)
+        {
+            Game game = GetGame(id);
+            games.Remove(game);
+        }
     }
 }

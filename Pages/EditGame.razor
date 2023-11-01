@@ -1,4 +1,4 @@
-﻿@page "/game"
+﻿@page "/Addgame"
 @using GameCatalog.Models;
 @inject NavigationManager NM
 
@@ -26,6 +26,7 @@
                 <InputDate id="releaseDate" @bind-Value="game.ReleaseDate" class="from-control"></InputDate>
             </div>
             <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" @onclick="@Cancel">Cancel</button>
         </EditForm>
     </div>
 </div>
@@ -40,6 +41,10 @@
     private void HandelSubmit()
     {
         GameClient.AddGame(game);
+        NM.NavigateTo("/");
+    }
+    private void Cancel()
+    {
         NM.NavigateTo("/");
     }
 }
